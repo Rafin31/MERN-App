@@ -39,9 +39,10 @@ const Header = () => {
                     <Navbar.Collapse id="responsive-navbar-nav mx-auto">
                         <Nav className="mx-auto text-center">
                             <NavLink onClick={() => setExpanded(false)} to="/">Home</NavLink>
-                            <NavLink onClick={() => setExpanded(false)} to="/About">About us</NavLink>
-                            <NavLink onClick={() => setExpanded(false)} to="/products">Products</NavLink>
+                            <NavLink onClick={() => setExpanded(false)} to="/category">Category</NavLink>
+                            <NavLink onClick={() => setExpanded(false)} to="/items">Items</NavLink>
                             <NavLink onClick={() => setExpanded(false)} to="/location">Location</NavLink>
+                            <NavLink onClick={() => setExpanded(false)} to="/About">About us</NavLink>
                             <NavLink onClick={() => setExpanded(false)} to="/contact">Contact Us</NavLink>
                         </Nav>
                         {/* <Nav className='align-items-center' >

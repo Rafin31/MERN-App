@@ -35,7 +35,7 @@ const Banner = () => {
                                         <div className="slider__banner slider__banner__1">
                                             <div className="banner__text">
                                                 <div className="row justify-content-center align-items-center">
-                                                    <div className="col-12">
+                                                    <div className="col-12" data-aos="fade-up">
                                                         <h1>Welcome To Organic Food</h1>
                                                         <p>Live Organic !</p>
                                                         <button className='customButtonNoHover'> <FaUserAlt /> Sign in</button>
@@ -53,7 +53,7 @@ const Banner = () => {
                                             <div className="banner__text">
                                                 <div className="row justify-content-center align-items-center">
                                                     <div className="col-12">
-                                                        <h1>100% Authentic Organic Food</h1>
+                                                        <h1>1000+ Authentic Organic Food</h1>
                                                         <p>Explore Now</p>
                                                         <button className='customButtonNoHover'> <FaUserAlt />  Sign in</button>
                                                     </div>
