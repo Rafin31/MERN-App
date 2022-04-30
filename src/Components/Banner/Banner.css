@@ -1,0 +1,47 @@
+.slider__banner {
+    width: 100%;
+    height: 600px;
+}
+
+.slider__banner__1 {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../../public/Assets/banner-1.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.banner-container {
+    padding: 0 !important;
+}
+
+.slider__banner__2 {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../../public/Assets/banner-2.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.slider__banner__3 {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../../public/Assets/banner-3.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+    color: #a1bf5d !important;
+
+}
+
+.swiper-pagination-bullet-active {
+    background-color: #a1bf5d !important;
+}
+
+.banner__text {
+    height: 100%;
+    color: white;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}

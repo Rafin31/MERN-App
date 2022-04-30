@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins:ital@1&display=swap');
+
+body {
+    font-family: 'Montserrat', sans-serif !important;
+}
+
 .customButton {
     border: 1px solid #a1bf5d;
     background-color: #a1bf5d;
@@ -5,6 +11,19 @@
     padding: 10px 15px;
     color: white;
     transition: all 0.3s ease-in-out;
+}
+
+.customButtonNoHover {
+    border: 1px solid #a1bf5d;
+    background-color: #a1bf5d;
+    border-radius: 8px;
+    padding: 10px 15px;
+    color: white;
+    transition: all 0.3s ease-in-out;
+}
+
+.customButtonNoHover:hover {
+    background-color: rgba(161, 191, 93, 0.5);
 }
 
 .customButton:hover {

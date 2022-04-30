@@ -6,6 +6,7 @@ import { FaBeer, FaFacebook } from 'react-icons/fa';
 import { Route, Routes } from 'react-router-dom';
 import Header from './Components/Header/Header';
 import AOS from 'aos';
+import Banner from './Components/Banner/Banner';
 
 
 function App() {
@@ -18,6 +19,11 @@ function App() {
 	return (
 		<>
 			<Header />
+			<Routes>
+				<Route path='/' element={
+					<Banner />
+				} />
+			</Routes>
 		</>
 	)
 }
