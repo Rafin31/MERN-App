@@ -4,6 +4,10 @@ body {
     font-family: 'Montserrat', sans-serif !important;
 }
 
+section {
+    padding-top: 100px;
+}
+
 .customButton {
     border: 1px solid #a1bf5d;
     background-color: #a1bf5d;
@@ -30,4 +34,36 @@ body {
     background-color: transparent;
     padding: 10px 15px;
     color: black;
+}
+
+/* Title Styles */
+
+.title__wrapper p {
+    margin: 0;
+    padding: 0;
+}
+
+.title__wrapper .small__title {
+    font-size: smaller;
+    color: #a1bf5d;
+    font-weight: 800;
+    position: relative;
+    display: inline;
+}
+
+.title__wrapper .small__title::after {
+    content: " ";
+    position: absolute;
+    left: 106%;
+    top: 48%;
+    height: 2px;
+    border-radius: 10px;
+    width: 90px;
+    background-color: #a1bf5d;
+}
+
+.title__wrapper .large__title {
+    font-size: 3rem;
+    color: #01304e;
+    font-weight: 800;
 }
