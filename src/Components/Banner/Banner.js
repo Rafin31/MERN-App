@@ -11,7 +11,7 @@ import "swiper/css/navigation";
 const Banner = () => {
     return (
         <>
-            <div className="container-fluid banner">
+            <div className="container-fluid">
                 <div className="row">
                     <div className="col-12 col-lg-12 banner-container">
                         <Swiper

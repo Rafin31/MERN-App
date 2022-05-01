@@ -4,7 +4,7 @@
 }
 
 .category__section {
-    max-width: 100vw !important;
+    width: 100% !important;
 }
 
 a {
@@ -19,7 +19,20 @@ a:hover {
 
 .category__wrapper .card {
     padding: 10px 25px;
-    min-height: 300px;
+    max-height: 200px;
+    text-align: center !important;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border 0.5s ease-out;
+}
+
+.category__wrapper .card:hover {
+    border: 2px solid #a1bf5d;
+}
+
+.category__wrapper .card p {
+    padding: 0;
+    margin: 0;
 }
 
 .category__section p {
@@ -29,11 +42,6 @@ a:hover {
     font-size: 1.2rem;
 }
 
-
-
-.category__section .category__wrapper {
-    text-align: center;
-}
 
 .category__visiting__link {
     color: #a1bf5d;
