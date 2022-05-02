@@ -11,6 +11,7 @@ import Banner from './Components/Banner/Banner';
 import Category from './Components/Category/Category';
 import Items from './Components/Items/Items';
 import Locations from './Components/Location/Locations';
+import Footer from './Components/Footer/Footer';
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
 						<Category />
 						<Items />
 						<Locations />
+						<Footer />
 					</>
 				} />
 			</Routes>

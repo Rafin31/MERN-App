@@ -110,12 +110,20 @@
 
         margin: 15px 0px;
     }
+
+    .upper__header__container {
+        padding: 0px 25px;
+    }
 }
 
 @media only screen and (max-width:480px) {
     .upper__header__container {
         font-size: x-small;
 
+    }
+
+    .upper__header__container {
+        padding: 0px 25px;
     }
 
 }

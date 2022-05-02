@@ -1,6 +1,7 @@
 .location {
     width: 100% !important;
-    height: 80vh;
+    min-height: 80vh;
+    height: auto;
     position: relative;
 }
 
