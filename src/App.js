@@ -10,6 +10,7 @@ import 'aos/dist/aos.css';
 import Banner from './Components/Banner/Banner';
 import Category from './Components/Category/Category';
 import Items from './Components/Items/Items';
+import Locations from './Components/Location/Locations';
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
 						<Banner />
 						<Category />
 						<Items />
+						<Locations />
 					</>
 				} />
 			</Routes>

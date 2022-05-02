@@ -15,7 +15,7 @@ const Category = () => {
                         <p className="large__title">Categories</p>
                     </div>
 
-                    <div className="row gy-3 justify-content-center align-items-center pt-5">
+                    <div className="row gy-3 justify-content-center align-items-center pt-5" data-aos='fade-up' data-aos-anchor-placement="top-center">
                         <div className="col-6 col-lg-2 col-md-6">
                             <div className="category__wrapper">
                                 <div className="card shadow-sm rounded">

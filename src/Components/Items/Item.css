@@ -73,7 +73,7 @@
     font-size: 1.3rem !important;
 }
 
-@media only screen and (max-width:480px) {
+@media only screen and (max-width:980px) {
     .items::before {
 
         top: -2%;
