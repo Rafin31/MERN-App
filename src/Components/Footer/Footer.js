@@ -40,12 +40,12 @@ const Footer = () => {
                             <img src="Assets/logo.png" alt="logo" className="footer__img w-75 mb-3" />
 
                             <div className="row">
-                                <div className="col-6">
+                                <div className="col-6 col-md-12 col-lg-6">
 
                                     <p className="number">10,256,258</p>
                                     <p className="footer_subheading">Item Sold </p>
                                 </div>
-                                <div className="col-6">
+                                <div className="col-6 col-md-12 col-lg-6">
                                     <p className="number">$5,500,000</p>
                                     <p className="footer_subheading">Profit </p>
                                 </div>

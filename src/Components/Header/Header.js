@@ -36,14 +36,14 @@ const Header = () => {
                         <span className="toggler-button toggler-button-middle"></span>
                         <span className="toggler-button toggler-button-bottom"></span>
                     </Navbar.Toggle>
-                    <Navbar.Collapse id="responsive-navbar-nav mx-auto">
+                    <Navbar.Collapse id="responsive-navbar-nav mx-auto navbarLinks">
                         <Nav className="mx-auto text-center">
-                            <NavLink onClick={() => setExpanded(false)} to="/">Home</NavLink>
-                            <NavLink onClick={() => setExpanded(false)} to="/category">Category</NavLink>
-                            <NavLink onClick={() => setExpanded(false)} to="/items">Items</NavLink>
-                            <NavLink onClick={() => setExpanded(false)} to="/location">Location</NavLink>
-                            <NavLink onClick={() => setExpanded(false)} to="/About">About us</NavLink>
-                            <NavLink onClick={() => setExpanded(false)} to="/contact">Contact Us</NavLink>
+                            <NavLink onClick={() => setExpanded(false)} className="me-3" to="/">Home</NavLink>
+                            <NavLink onClick={() => setExpanded(false)} className="me-3" to="/category">Category</NavLink>
+                            <NavLink onClick={() => setExpanded(false)} className="me-3" to="/items">Items</NavLink>
+                            <NavLink onClick={() => setExpanded(false)} className="me-3" to="/location">Location</NavLink>
+                            <NavLink onClick={() => setExpanded(false)} className="me-3" to="/About">About us</NavLink>
+                            <NavLink onClick={() => setExpanded(false)} className="me-3" to="/contact">Contact Us</NavLink>
                         </Nav>
                         {/* <Nav className='align-items-center' >
                             <span><img src={'Assets/user-avatar.png'} alt="" srcset="" /></span>
@@ -55,7 +55,8 @@ const Header = () => {
                                 <NavDropdown.Item href="#action/3.4"><FaSignOutAlt /> Logout</NavDropdown.Item>
                             </NavDropdown>
                         </Nav> */}
-                        <button className='customButton d-lg-inline d-block mx-auto '> <FaUserAlt />  Sign in</button>
+                        <Link className='customButton signinButton d-lg-inline d-block mx-auto text-center '
+                            to='/login'> <FaUserAlt /> Sign In</Link>
                     </Navbar.Collapse>
 
                 </Container>

@@ -10,11 +10,13 @@
 
 }
 
-.navbar a {
+
+.navbar .navbarLinks a {
     color: black !important;
     font-weight: 500;
     text-decoration: none !important;
-    margin-right: 20px;
+    margin-right: 20px !important;
+
 }
 
 .navbar a.active {
@@ -103,6 +105,7 @@
     align-items: center;
     padding: 10px 5px;
 }
+
 
 
 @media only screen and (max-width:980px) {

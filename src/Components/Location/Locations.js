@@ -20,11 +20,11 @@ const Locations = () => {
 
                         </div>
 
-                        <div className="col-12 col-lg-4 col-md-4 " data-aos='fade-up'>
+                        <div className="col-12 col-lg-4 col-md-12 " data-aos='fade-up'>
                             <p className="call_us">Call us at</p>
                             <p className="tel">+880 1860958541</p>
                         </div>
-                        <div className="col-12 col-lg-8 col-md-8" data-aos='fade-up'>
+                        <div className="col-12 col-lg-8 col-md-12" data-aos='fade-up'>
                             <p className="call_us mb-3">Find us at </p>
                             <MapContainer center={position} zoom={13} scrollWheelZoom={false}>
                                 <TileLayer

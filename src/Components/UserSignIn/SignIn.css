@@ -1,0 +1,96 @@
+.login_wrapper {
+    background-color: #eff0f5;
+}
+
+.loginFormContainer {
+    height: 80vh;
+    width: 100%;
+}
+
+.sign_Form {
+    width: 100%;
+}
+
+.content {
+    margin: 10px auto;
+    width: 200px;
+}
+
+.card_header {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 50px;
+
+}
+
+.loginFormContainer .form__instruction a {
+    color: blue !important;
+}
+
+.loginFormContainer .form__instruction a:hover {
+    text-decoration: underline;
+}
+
+.orWrapper {
+    text-align: center;
+    font-size: 15px;
+    background:
+        linear-gradient(#000 0 0) left,
+        linear-gradient(#000 0 0) right;
+    background-size: 40% 1px;
+    background-repeat: no-repeat;
+}
+
+.googleButton {
+    border: 1px solid white;
+    background-color: white;
+    border-radius: 8px;
+    padding: 10px 15px;
+    color: black !important;
+    transition: all 0.3s ease-in-out;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    transition: all 0.3ms ease-in;
+}
+
+.googleButton:hover {
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+}
+
+.googlIcon {
+    width: 5%;
+    margin-right: 10px;
+}
+
+.input-group-text {
+    border: 0px !important;
+    background-color: transparent !important;
+    font-size: larger;
+    height: 100%;
+}
+
+.form-control {
+    border: none;
+    background-color: transparent;
+}
+
+.input-group {
+    border-bottom: 1px solid black;
+    padding: 10px 0px;
+    background-color: transparent !important;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    background-color: transparent !important;
+}
+
+
+
+
+@media only screen and (max-width:560px) {
+    .googlIcon {
+        width: 10%;
+        margin-right: 10px;
+    }
+
+}
