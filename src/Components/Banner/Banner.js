@@ -7,6 +7,7 @@ import { FaUserAlt } from 'react-icons/fa';
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import { Link } from 'react-router-dom';
 
 const Banner = () => {
     return (
@@ -38,7 +39,8 @@ const Banner = () => {
                                                     <div className="col-12" data-aos="fade-up">
                                                         <h1>Welcome To Organic Food</h1>
                                                         <p>Live Organic !</p>
-                                                        <button className='customButtonNoHover'> <FaUserAlt /> Sign in</button>
+                                                        <Link className='customButtonNoHover'
+                                                            to='/login'> <FaUserAlt /> Sign In</Link>
                                                     </div>
                                                 </div>
                                             </div>
@@ -55,7 +57,8 @@ const Banner = () => {
                                                     <div className="col-12">
                                                         <h1>1000+ Authentic Organic Food</h1>
                                                         <p>Explore Now</p>
-                                                        <button className='customButtonNoHover'> <FaUserAlt />  Sign in</button>
+                                                        <Link className='customButtonNoHover'
+                                                            to='/login'> <FaUserAlt /> Sign In</Link>
                                                     </div>
                                                 </div>
                                             </div>
@@ -72,7 +75,8 @@ const Banner = () => {
                                                     <div className="col-12">
                                                         <h1>Our customer is our main Priority </h1>
                                                         <p>Explore Now</p>
-                                                        <button className='customButtonNoHover'> <FaUserAlt />  Sign in</button>
+                                                        <Link className='customButtonNoHover'
+                                                            to='/login'> <FaUserAlt /> Sign In</Link>
                                                     </div>
                                                 </div>
                                             </div>

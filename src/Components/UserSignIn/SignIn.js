@@ -1,32 +1,57 @@
 import React, { useState } from 'react';
 import './SignIn.css'
 import { FaUserAlt, FaEnvelope, FaKey } from 'react-icons/fa'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Helmet from 'react-helmet';
 import auth from '../../firebase.init';
-import { useCreateUserWithEmailAndPassword, useSendEmailVerification } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSendEmailVerification, useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { toast } from 'react-toastify';
-import { async } from '@firebase/util';
+
+
 
 
 const SignIn = () => {
 
     const [
         createUserWithEmailAndPassword,
-        user,
+        registrationUser,
         loading,
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
+
+
     const [
         sendEmailVerification,
         sending,
         EmailVerificationError
     ] = useSendEmailVerification(auth);
 
+    const [signInWithGoogle,
+        googleUser,
+        googleLoading,
+        googleError
+    ] = useSignInWithGoogle(auth);
 
-    const [toggle, setToggle] = useState(true)
-    const nevigate = useNavigate()
-    const [errorMessage, setErrorMessage] = useState("")
+    const [
+        signInWithEmailAndPassword,
+        SignInUser,
+        SignInloading,
+        SignInerror,
+    ] = useSignInWithEmailAndPassword(auth);
+
+    const [sendPasswordResetEmail,
+        PasswordResetSending,
+        PasswordResetError
+    ] = useSendPasswordResetEmail(auth);
+
+
+    let navigate = useNavigate();
+    let location = useLocation();
+    const [toggle, setToggle] = useState(false)
+    let customErrorMessage
+
+
+
     const [SignUpCredentials, SetSignUpCredentials] = useState({
 
         name: "",
@@ -45,18 +70,13 @@ const SignIn = () => {
         setToggle(!toggle)
     }
 
-    const verify = async () => {
-        await sendEmailVerification()
-        nevigate("/login")
-
-    }
 
     const handleFormChange = (event) => {
         event.preventDefault();
         if (toggle) { //signUp
 
             SetSignUpCredentials({ ...SignUpCredentials, [event.target.name]: event.target.value });
-            console.log(SignUpCredentials);
+            // console.log(SignUpCredentials);
 
         } else { //signIn
             SetSignInCredentials({ ...SignInCredentials, [event.target.name]: event.target.value });
@@ -67,28 +87,62 @@ const SignIn = () => {
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        // console.log(SignUpCredentials.name);
-        if (toggle) {
-            await createUserWithEmailAndPassword(SignUpCredentials.email, SignUpCredentials.password)
-            // console.log(SignUpCredentials.email, SignUpCredentials.password);
+
+        if (toggle) { //sign up
+            if (SignUpCredentials.email !== " " && SignUpCredentials.password !== " ") {
+                await createUserWithEmailAndPassword(SignUpCredentials.email, SignUpCredentials.password)
+                await sendEmailVerification()
+
+            } else {
+                customErrorMessage = <p className='text-center text-danger mt-0'>* Filed can not be empty</p>
+                return
+            }
+        } else { //sign in
+            signInWithEmailAndPassword(SignInCredentials.email, SignInCredentials.password);
         }
     }
 
-    if (error || EmailVerificationError) {
-        setErrorMessage("Something Went Wrong")
-        console.log(errorMessage);
+    const handleGoogleSignUp = () => {
+        signInWithGoogle()
     }
-    if (loading) {
+
+    const resetPasswordHandle = async () => {
+
+        if (SignInCredentials.email !== "" && SignInCredentials.email.includes("@")) {
+
+            await sendPasswordResetEmail(SignInCredentials.email);
+
+        } else {
+
+            toast.error("Put a Valid Email Address")
+        }
+
+
+
+    }
+
+
+
+    if (error || EmailVerificationError || googleError || PasswordResetError) {
+
+        customErrorMessage = <p className='text-center text-danger mt-0'>{!PasswordResetError ? "*Something Went Wrong" : "User Doesn't Exist"}</p>
+    }
+    if (SignInerror) {
+        customErrorMessage = <p className='text-center text-danger mt-0'>*Wrong Credentials</p>
+    }
+    if (loading || googleLoading || SignInloading) {
         console.log("Loading");
     }
     if (sending) {
-        toast.success("Email Sent")
+        toast.warning("A Email Verification Link is sent to your email")
     }
-    if (user) {
-        if (user?.user?.providerData[0]?.providerId === "password") {
-            verify()
-        }
+    if (PasswordResetSending) {
+        toast.warning("A Password Reset Link is sent to your email")
+    }
+    if (registrationUser || googleUser || SignInUser) {
 
+        let from = location.state?.from?.pathname || "/";
+        navigate(from, { replace: true })
     }
 
 
@@ -108,7 +162,7 @@ const SignIn = () => {
                                 <div className="card_header_container">
                                     <p className="card_header text-center">{toggle ? "Sign Up" : "Log in"}</p>
                                 </div>
-                                <form action="" onKeyUp={(e) => handleFormChange(e)} onSubmit={(e) => handleFormSubmit(e)}>
+                                <form autocomplete="nope" action="" onKeyUp={(e) => handleFormChange(e)} onSubmit={(e) => handleFormSubmit(e)}>
 
                                     {
                                         toggle ?
@@ -117,7 +171,7 @@ const SignIn = () => {
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text" id="basic-addon1"><FaUserAlt /></span>
                                                     </div>
-                                                    <input name="name" required autoComplete='off' type="text" class="form-control" placeholder="* Your name" aria-label="*Your name" aria-describedby="basic-addon1" />
+                                                    <input name="name" required type="text" class="form-control" placeholder="* Your name" aria-label="*Your name" aria-describedby="basic-addon1" />
                                                 </div>
                                             </> :
                                             " "
@@ -128,18 +182,39 @@ const SignIn = () => {
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="basic-addon1"><FaEnvelope /></span>
                                         </div>
-                                        <input name="email" required autoComplete='off' type="email" class="form-control" placeholder="* Your Email" aria-label="Email" aria-describedby="basic-addon1" />
+                                        <input name="email" required type="email" class="form-control" placeholder="* Your Email" aria-label="Email" aria-describedby="basic-addon1" />
                                     </div>
 
                                     <div class="input-group mb-5">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="basic-addon1"><FaKey /></span>
                                         </div>
-                                        <input name="password" required autoComplete='off' type="password" class="form-control" placeholder="*Your Password" aria-label="Password" aria-describedby="basic-addon1" />
+                                        <input name="password" autocomplete="false" required autoComplete='off' type="password" class="form-control" placeholder="*Your Password" aria-label="Password" aria-describedby="basic-addon1" />
+                                    </div>
+
+                                    <div className="error-message">
+                                        {customErrorMessage}
                                     </div>
 
                                     <div className="submit_button">
-                                        <button className="customButton w-100" type='submit'>{toggle ? "Sign Up" : "Log in"}</button>
+                                        {
+                                            loading || SignInloading ?
+
+                                                <button className="customButton w-100" disabled >
+
+                                                    <div class="spinner-border spinner-border-sm" role="status">
+                                                        <span class="visually-hidden">Loading...</span>
+                                                    </div>
+
+                                                </button>
+
+                                                :
+                                                <button className="customButton w-100" type='submit'>
+
+                                                    {toggle ? "Sign Up" : "Log in"}
+
+                                                </button>
+                                        }
                                     </div>
 
 
@@ -147,22 +222,38 @@ const SignIn = () => {
                                         <p class="or">or</p>
                                     </div>
 
-                                    <button className="googleButton w-100">
-                                        <img src="Assets/Icons/google-logo.png" className='googlIcon' alt="icon" srcset="" />
-                                        Google
-                                    </button>
+
+                                    {
+                                        googleLoading ?
+
+                                            <button className="customButton w-100" disabled >
+
+                                                <div class="spinner-border spinner-border-sm" role="status">
+                                                    <span class="visually-hidden">Loading...</span>
+                                                </div>
+
+                                            </button>
+
+                                            :
+                                            <button className="googleButton w-100" onClick={() => handleGoogleSignUp()}>
+                                                <img src="Assets/Icons/google-logo.png" className='googlIcon' alt="icon" srcset="" />
+                                                Google
+                                            </button>
+                                    }
 
                                     <div className="form__instruction text-center">
                                         {
                                             toggle ? " " :
                                                 <>
                                                     <p className="form_text mt-3">
-                                                        Forget Password? <span><Link to={" "}>Reset Password Here</Link></span>
+                                                        Forget Password? <span><Link
+                                                            onClick={() => resetPasswordHandle()}
+                                                            to={""}>Reset Password Here</Link></span>
                                                     </p>
                                                 </>
                                         }
 
-                                        <p className="form_text mt-3 ">{toggle ? "Already Signed up? " : "Not Signed up yet? "} <span className='signUpLink'><Link to={""} onClick={toggleFunction}> {toggle ? "Sign in " : " Sign up  "} </Link></span> here.</p>
+                                        <p className="form_text mt-3 ">{toggle ? "Already Signed up? " : "Not Signed up yet? "} <span className='signUpLink'><Link to={""} onClick={() => toggleFunction()}> {toggle ? "Sign in " : " Sign up  "} </Link></span> here.</p>
                                     </div>
 
                                 </form>

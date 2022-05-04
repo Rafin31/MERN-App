@@ -13,6 +13,7 @@ import Locations from './Components/Location/Locations';
 import Footer from './Components/Footer/Footer';
 import SignIn from './Components/UserSignIn/SignIn';
 import { toast, ToastContainer } from 'react-toastify';
+import Loading from './Components/Loaidng/Loading';
 
 
 
@@ -26,6 +27,11 @@ function App() {
 
 	return (
 		<>
+			<ToastContainer
+				position="top-center"
+				autoClose={2000}
+			/>
+
 			<Header />
 			<Routes>
 				<Route path='/' element={
@@ -37,19 +43,12 @@ function App() {
 					</>
 				} />
 				<Route path='/login' element={<SignIn />} />
+				<Route path='/loading' element={<Loading />} />
 			</Routes>
 			<Footer />
 
-			<ToastContainer
-				position="top-center"
-				autoClose={2000}
-				hideProgressBar={false}
-				newestOnTop={false}
-				closeOnClick
-				rtl={false}
-				pauseOnFocusLoss
-				draggable
-				pauseOnHover />
+
+
 		</>
 	)
 }

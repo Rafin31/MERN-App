@@ -1,13 +1,22 @@
 
 import React, { useState } from 'react';
 import './Header.css'
-import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { Container, Nav, Navbar, NavDropdown, Spinner } from 'react-bootstrap';
 import { Link, NavLink } from 'react-router-dom';
-import { FaUserAlt, FaBox, FaSignOutAlt, FaPhoneAlt, FaFax, FaAddressBook, FaClock, FaSignInAlt } from 'react-icons/fa';
+import { FaUserAlt, FaBox, FaSignOutAlt, FaPhoneAlt, FaFax, FaAddressBook, FaClock } from 'react-icons/fa';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { signOut } from 'firebase/auth';
 import { BsFillGearFill } from 'react-icons/bs'
+import auth from '../../firebase.init';
 
 
 const Header = () => {
+
+    const [user, loading] = useAuthState(auth);
+
+    const handleLogout = () => {
+        signOut(auth)
+    }
 
 
     const [expanded, setExpanded] = useState(false);
@@ -45,18 +54,38 @@ const Header = () => {
                             <NavLink onClick={() => setExpanded(false)} className="me-3" to="/About">About us</NavLink>
                             <NavLink onClick={() => setExpanded(false)} className="me-3" to="/contact">Contact Us</NavLink>
                         </Nav>
-                        {/* <Nav className='align-items-center' >
-                            <span><img src={'Assets/user-avatar.png'} alt="" srcset="" /></span>
-                            <NavDropdown className='text-center' title="User" id="collasible-nav-dropdown">
-                                <NavDropdown.Item href="#action/3.1"> <FaUserAlt /> Profile</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.2"> <FaBox /> Inventory</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.3"><BsFillGearFill /> Manage Products</NavDropdown.Item>
-                                <NavDropdown.Divider />
-                                <NavDropdown.Item href="#action/3.4"><FaSignOutAlt /> Logout</NavDropdown.Item>
-                            </NavDropdown>
-                        </Nav> */}
-                        <Link className='customButton signinButton d-lg-inline d-block mx-auto text-center '
-                            to='/login'> <FaUserAlt /> Sign In</Link>
+
+                        {
+
+                            loading ?
+                                <>
+                                    <Spinner animation="border" role="status">
+                                        <span className="visually-hidden">Loading...</span>
+                                    </Spinner>
+                                </> :
+
+                                user ? <>
+                                    <Nav className='align-items-center' >
+                                        <span><img className=' userImgHeader rounded-circle w-50 ms-auto d-block' src={user.photoURL ? user.photoURL : 'Assets/user-avatar.png'} referrerpolicy="no-referrer" alt="userImg" srcset="" /></span>
+
+
+                                        <NavDropdown className='text-center'
+                                            title={user.desiplayName == null ? user.email.split("@")[0] : user.desiplayName}
+
+
+                                            id="collasible-nav-dropdown">
+                                            <NavDropdown.Item href="#action/3.1"> <FaUserAlt /> Profile</NavDropdown.Item>
+                                            <NavDropdown.Item href="#action/3.2"> <FaBox /> Inventory</NavDropdown.Item>
+                                            <NavDropdown.Item href="#action/3.3"><BsFillGearFill /> Manage Products</NavDropdown.Item>
+                                            <NavDropdown.Divider />
+                                            <NavDropdown.Item href=" " onClick={handleLogout}><FaSignOutAlt /> Logout</NavDropdown.Item>
+                                        </NavDropdown>
+                                    </Nav>
+
+                                </> :
+                                    <Link className='customButton signinButton d-lg-inline d-block mx-auto text-center '
+                                        to='/login'> <FaUserAlt /> Sign In</Link>
+                        }
                     </Navbar.Collapse>
 
                 </Container>
