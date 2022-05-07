@@ -14,6 +14,8 @@ import Footer from './Components/Footer/Footer';
 import SignIn from './Components/UserSignIn/SignIn';
 import { toast, ToastContainer } from 'react-toastify';
 import Loading from './Components/Loaidng/Loading';
+import ExpressContext from './Components/Context/ExpressContext';
+import ManageItems from './Components/Manageitems/ManageItems';
 
 
 
@@ -32,21 +34,24 @@ function App() {
 				autoClose={2000}
 			/>
 
-			<Header />
-			<Routes>
-				<Route path='/' element={
-					<>
-						<Banner />
-						<Category />
-						<Items />
-						<Locations />
-					</>
-				} />
-				<Route path='/login' element={<SignIn />} />
-				<Route path='/loading' element={<Loading />} />
-			</Routes>
-			<Footer />
+			<ExpressContext>
+				<Header />
+				<Routes>
+					<Route path='/' element={
+						<>
+							<Banner />
+							<Category />
+							<Items />
+							<Locations />
+						</>
+					} />
+					<Route path='/login' element={<SignIn />} />
+					<Route path='/loading' element={<Loading />} />
+					<Route path='/items/:id' element={<ManageItems />} />
+				</Routes>
+				<Footer />
 
+			</ExpressContext>
 
 
 		</>

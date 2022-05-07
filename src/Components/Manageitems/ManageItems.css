@@ -1,0 +1,10 @@
+.manageItems_container {
+    padding-top: 80px;
+    height: 60vh;
+    width: 100%;
+}
+
+.idColumn {
+    max-width: 80px !important;
+    word-wrap: break-word;
+}

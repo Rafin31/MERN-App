@@ -1,17 +1,27 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './Item.css'
 import { ImPriceTags } from 'react-icons/im'
 import { MdOutlineProductionQuantityLimits, MdUpdate } from 'react-icons/md'
 import { BsTruck } from 'react-icons/bs'
+import useRest from '../Hooks/useRest';
+import { useNavigate } from 'react-router-dom';
 const Items = () => {
 
-    const [items, setItems] = useState([])
+    // const [items, setItems] = useState([])
 
-    useEffect(() => {
-        fetch('item.json')
-            .then(res => res.json())
-            .then(data => setItems(data))
-    }, [])
+    // useEffect(() => {
+    //     fetch('https://desolate-badlands-90041.herokuapp.com/organicFood/items')
+    //         .then(res => res.json())
+    //         .then(data => setItems(data))
+    // }, [])
+
+    const { items } = useRest()
+    const navigate = useNavigate()
+
+    const redirect = (id) => {
+        navigate(`/items/${id}`)
+    }
+
 
     return (
         <>
@@ -24,10 +34,10 @@ const Items = () => {
 
                         </div>
                         {
-                            items.slice(0, 5).map(({ id, name, supplierName, description, quantity, price, img }) => {
+                            items.slice(0, 6).map(({ _id, name, supplierName, description, quantity, price, img }) => {
                                 return (
                                     <>
-                                        <div key={id} className="col-12 col-xl-4 col-lg-4 col-md-6">
+                                        <div key={_id} className="col-12 col-xl-4 col-lg-4 col-md-6">
 
                                             <div className="card rounded shadow-sm"
                                                 data-aos="fade-up"
@@ -49,7 +59,7 @@ const Items = () => {
                                                             </p></div>
                                                     </div>
 
-                                                    <button className="d-block mx-auto customButton mt-4">
+                                                    <button onClick={() => redirect(_id)} className="d-block mx-auto customButton mt-4">
                                                         <MdUpdate className='me-2 button_logo' />
                                                         Update</button>
 
