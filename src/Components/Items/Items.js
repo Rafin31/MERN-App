@@ -4,19 +4,15 @@ import { ImPriceTags } from 'react-icons/im'
 import { MdOutlineProductionQuantityLimits, MdUpdate } from 'react-icons/md'
 import { BsTruck } from 'react-icons/bs'
 import useRest from '../Hooks/useRest';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 const Items = () => {
 
-    // const [items, setItems] = useState([])
 
-    // useEffect(() => {
-    //     fetch('https://desolate-badlands-90041.herokuapp.com/organicFood/items')
-    //         .then(res => res.json())
-    //         .then(data => setItems(data))
-    // }, [])
 
     const { items } = useRest()
     const navigate = useNavigate()
+
+    console.log(items);
 
     const redirect = (id) => {
         navigate(`/items/${id}`)
@@ -72,6 +68,10 @@ const Items = () => {
                             })
                         }
 
+                        <div className="col-12 justify-content-center align-items-center">
+                            <Link className='text-center w-25 customButton d-block ms-auto'
+                                to={'/manageInventories'}>Manage inventories</Link>
+                        </div>
                     </div>
                 </div>
             </section>

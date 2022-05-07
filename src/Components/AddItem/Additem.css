@@ -1,0 +1,21 @@
+.add__item {
+    min-height: 70vh;
+    width: 100%;
+    padding: 80px 0px;
+}
+
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+    width: 100%;
+    height: 100%;
+    padding: 10px 0px;
+}

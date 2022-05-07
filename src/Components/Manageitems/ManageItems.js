@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './ManageItems.css'
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import useRest from '../Hooks/useRest';
 import { toast } from 'react-toastify';
 
@@ -18,7 +18,6 @@ const ManageItems = () => {
         fetch(`${baseURL}/items/${id}`)
             .then(res => res.json())
             .then(data => setItem(data))
-        console.log("render Again");
     }, [id, item])
 
 
@@ -135,6 +134,11 @@ const ManageItems = () => {
                                     </div>
                                 </div>
                             </div>
+                        </div>
+
+                        <div className="col-12 col-lg-10 justify-content-center align-items-center">
+                            <Link className='text-center w-25 customButton d-block ms-auto'
+                                to={'/manageInventories'}>Manage inventories</Link>
                         </div>
 
                     </div>

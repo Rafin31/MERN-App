@@ -17,6 +17,8 @@ import Loading from './Components/Loaidng/Loading';
 import ExpressContext from './Components/Context/ExpressContext';
 import ManageItems from './Components/Manageitems/ManageItems';
 import ProtectiveRoute from './Components/UserSignIn/ProtectiveRoute';
+import Inventory from './Components/Inventroy/Inventory';
+import Additem from './Components/AddItem/Additem';
 
 
 
@@ -47,11 +49,29 @@ function App() {
 						</>
 					} />
 					<Route path='/login' element={<SignIn />} />
+
+
+
 					<Route path='/items/:id' element={
 						<ProtectiveRoute>
 							<ManageItems />
 						</ProtectiveRoute>
 					} />
+
+
+					<Route path='/manageInventories' element={
+						<ProtectiveRoute>
+							<Inventory />
+						</ProtectiveRoute>
+					} />
+
+					<Route path='/addItem' element={
+						<ProtectiveRoute>
+							<Additem />
+						</ProtectiveRoute>
+					} />
+
+
 				</Routes>
 				<Footer />
 

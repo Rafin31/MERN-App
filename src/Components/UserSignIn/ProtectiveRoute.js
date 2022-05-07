@@ -12,7 +12,8 @@ const ProtectiveRoute = ({ children }) => {
     let location = useLocation();
 
     if (loading) {
-        <Loading />
+
+        return <Loading />
     }
 
     if (!user) {

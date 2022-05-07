@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 const Rest = () => {
 
     const [items, setItems] = useState([])
     const [singleItem, setSingleItem] = useState([])
     const baseURL = 'http://localhost:5000/organicFood';
-
 
     const loadItems = () => {
         fetch(`${baseURL}/items`)
@@ -34,19 +33,27 @@ const Rest = () => {
             body: JSON.stringify(item),
 
         })
-            .then(res => res.json())
-            .then(data => console.log(data))
 
-        // return respond;
+    }
+    const deleteItem = (id) => {
+
+        fetch(`${baseURL}/items/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+
     }
 
-
     loadItems()
+
 
     return {
         items,
         loadSingleItem,
-        reStock
+        reStock,
+        deleteItem
     }
 
 };
