@@ -14,6 +14,7 @@ section {
     background-color: #a1bf5d;
     border-radius: 8px;
     padding: 10px 15px;
+    cursor: pointer;
     color: white !important;
     transition: all 0.3s ease-in-out;
 }
@@ -22,6 +23,7 @@ section {
     border: 1px solid #a1bf5d;
     background-color: #a1bf5d;
     border-radius: 8px;
+    cursor: pointer;
     padding: 10px 15px;
     color: white;
     transition: all 0.3s ease-in-out;

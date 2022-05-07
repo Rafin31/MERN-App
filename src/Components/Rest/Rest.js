@@ -22,11 +22,30 @@ const Rest = () => {
         return singleItem;
     }
 
+    const reStock = (id, item) => {
+
+        // let respond;
+        // console.log(id, qty);
+        fetch(`${baseURL}/items/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(item),
+
+        })
+            .then(res => res.json())
+            .then(data => console.log(data))
+
+        // return respond;
+    }
+
     loadItems()
 
     return {
         items,
-        loadSingleItem
+        loadSingleItem,
+        reStock
     }
 
 };
