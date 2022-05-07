@@ -9,7 +9,6 @@ export const loadingContext = createContext(false)
 const ProtectiveRoute = ({ children }) => {
 
     const [user, loading] = useAuthState(auth);
-    const [loadingSpinner, setloadingSpinner] = useState(false)
     let location = useLocation();
 
     if (loading) {

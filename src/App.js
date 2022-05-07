@@ -16,6 +16,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import Loading from './Components/Loaidng/Loading';
 import ExpressContext from './Components/Context/ExpressContext';
 import ManageItems from './Components/Manageitems/ManageItems';
+import ProtectiveRoute from './Components/UserSignIn/ProtectiveRoute';
 
 
 
@@ -46,8 +47,11 @@ function App() {
 						</>
 					} />
 					<Route path='/login' element={<SignIn />} />
-					<Route path='/loading' element={<Loading />} />
-					<Route path='/items/:id' element={<ManageItems />} />
+					<Route path='/items/:id' element={
+						<ProtectiveRoute>
+							<ManageItems />
+						</ProtectiveRoute>
+					} />
 				</Routes>
 				<Footer />
 

@@ -32,12 +32,29 @@ const ManageItems = () => {
             let updatedItem = { ...item }
             updatedItem.quantity = quantity
 
-            const res = reStock(id, updatedItem)
-            console.log(res);
+            reStock(id, updatedItem)
+            toast.success("Item Added")
+            event.target.stockQty.value = " "
         } else {
             toast.error("Put value greater than 0")
         }
     }
+
+    const handleSoldItem = (event) => {
+        event.preventDefault()
+        if (quantity > 0) {
+            quantity = item.quantity - 1
+            let updatedItem = { ...item }
+            updatedItem.quantity = quantity
+
+            reStock(id, updatedItem)
+            toast.success("Item Sold")
+        } else {
+            toast.error("Item is unavailable, Please restock")
+        }
+
+    }
+
 
 
 
@@ -93,7 +110,7 @@ const ManageItems = () => {
                                                     <td className='w-50' >{description}</td>
                                                     <td>{price}</td>
                                                     <td>{quantity}</td>
-                                                    <td><button className="customButton w-100 ">Sold</button></td>
+                                                    <td><button onClick={(e) => handleSoldItem(e)} className="customButton w-100 ">Sold</button></td>
                                                 </tr>
                                             </>
                                     }
@@ -107,7 +124,7 @@ const ManageItems = () => {
                                 <div className="button customButtonNoHover text-center pointer-event"
                                     onClick={() => setIsShow(!isShow)}>Restock</div>
 
-                                <div className={!isShow ? "show restocksForm   my-4" : "restocksForm   my-4"}>
+                                <div className={!isShow ? "showReStockForm restocksForm   my-4" : "restocksForm   my-4"}>
                                     <div className="card shadow-sm rounded p-2">
                                         <div className="form mx-auto">
                                             <form action="" onSubmit={(e) => handleReStock(e)}>

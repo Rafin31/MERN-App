@@ -32,7 +32,7 @@ input[type=number]:focus {
     border-bottom: 1px solid black;
 }
 
-.show {
+.showReStockForm {
     overflow: hidden !important;
     height: 0 !important;
 }
