@@ -87,7 +87,7 @@ const SignIn = () => {
 
     const getJWT = async (email) => {
 
-        await fetch('http://localhost:5000/organicFood/login', {
+        await fetch('https://desolate-badlands-90041.herokuapp.com/organicFood/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -114,7 +114,6 @@ const SignIn = () => {
         } else { //sign in
             await signInWithEmailAndPassword(SignInCredentials.email, SignInCredentials.password);
             const email = SignInCredentials.email
-            let token;
             //JWT token generate
 
             getJWT(email)

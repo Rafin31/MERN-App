@@ -7,7 +7,7 @@ import Loading from '../Loaidng/Loading';
 
 const Inventory = () => {
 
-    const baseApiUrl = 'http://localhost:5000/organicFood';
+    const baseApiUrl = 'https://desolate-badlands-90041.herokuapp.com/organicFood';
     const [items, setItems] = useState([])
     const { deleteItem } = useRest()
 

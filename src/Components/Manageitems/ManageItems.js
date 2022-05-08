@@ -9,7 +9,7 @@ const ManageItems = () => {
     const [isShow, setIsShow] = useState(false)
     const [item, setItem] = useState({})
     const { id } = useParams()
-    const baseURL = 'http://localhost:5000/organicFood';
+    const baseURL = 'https://desolate-badlands-90041.herokuapp.com/organicFood';
 
     const { reStock } = useRest()
 

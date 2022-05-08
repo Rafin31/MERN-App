@@ -4,7 +4,7 @@ const Rest = () => {
 
     const [items, setItems] = useState([])
     const [singleItem, setSingleItem] = useState([])
-    const baseURL = 'http://localhost:5000/organicFood';
+    const baseURL = 'https://desolate-badlands-90041.herokuapp.com/organicFood';
 
     const loadItems = () => {
         fetch(`${baseURL}/items`)
