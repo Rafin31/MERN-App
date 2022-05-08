@@ -22,6 +22,7 @@ import Additem from './Components/AddItem/Additem';
 import MyItems from './Components/MyItems/MyItems';
 import { FormGroup } from 'react-bootstrap';
 import Four04 from './Components/404page/Four04';
+import Blog from './Components/Blog/Blog';
 
 
 
@@ -80,7 +81,7 @@ function App() {
 						</ProtectiveRoute>
 					} />
 
-
+					<Route path='/blog' element={<Blog />} />
 					<Route path='*' element={<Four04 />} />
 
 

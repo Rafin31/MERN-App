@@ -53,6 +53,7 @@ const Header = () => {
                             <NavLink onClick={() => setExpanded(false)} className="me-3" to="/items">Items</NavLink>
                             <NavLink onClick={() => setExpanded(false)} className="me-3" to="/location">Location</NavLink>
                             <NavLink onClick={() => setExpanded(false)} className="me-3" to="/About">About us</NavLink>
+                            <NavLink onClick={() => setExpanded(false)} className="me-3" to="/blog">Blog</NavLink>
                             <NavLink onClick={() => setExpanded(false)} className="me-3" to="/contact">Contact Us</NavLink>
                         </Nav>
 
