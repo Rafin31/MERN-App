@@ -1,31 +1,35 @@
 import React, { useEffect, useState } from 'react';
-import './Inventory.css'
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
-import useRest from '../Hooks/useRest';
 import { toast } from 'react-toastify';
+import auth from '../../firebase.init';
+import useRest from '../Hooks/useRest';
 import Loading from '../Loaidng/Loading';
 
-const Inventory = () => {
-
+const MyItems = () => {
     const baseApiUrl = 'http://localhost:5000/organicFood';
     const [items, setItems] = useState([])
     const { deleteItem } = useRest()
 
 
+    const [user, loading] = useAuthState(auth)
 
 
 
     useEffect(() => {
 
-        fetch(`${baseApiUrl}/items`)
+        fetch(`${baseApiUrl}/myItems?email=${user.email}`)
             .then(res => res.json())
             .then(data => setItems(data))
 
-    }, [items])
+    }, [items, user])
 
-    if (!items) {
+
+    if (!items || loading) {
         return <Loading />
     }
+
+    // console.log(items);
 
 
 
@@ -47,7 +51,7 @@ const Inventory = () => {
                     <div className="row justify-content-center align-items-center">
 
                         <div className="col-12 text-center pb-5">
-                            <h4>Manage Inventory Item</h4>
+                            <h4>My Item</h4>
                         </div>
 
                         <div className="col-12 col-lg-12 justify-content-center align-items-center">
@@ -62,6 +66,7 @@ const Inventory = () => {
                                 <thead>
                                     <tr>
                                         <th scope="col">#Id</th>
+                                        <th scope="col">Author Email</th>
                                         <th scope="col">Image</th>
                                         <th scope="col">supplier </th>
                                         <th scope="col">Name</th>
@@ -76,22 +81,19 @@ const Inventory = () => {
                                         !items.length ?
                                             <>
                                                 <tr>
-                                                    <td colSpan={8}>
-                                                        <div class="d-flex justify-content-center">
-                                                            <div class="spinner-border" role="status">
-                                                                <span class="visually-hidden">Loading...</span>
-                                                            </div>
-                                                        </div>
+                                                    <td colSpan={9}>
+                                                        You have No item
                                                     </td>
                                                 </tr>
                                             </>
                                             :
-                                            items.map(({ _id, name, price, quantity, img, description, supplierName }) => {
+                                            items?.map(({ _id, authorEmail, name, price, quantity, img, description, supplierName }) => {
 
                                                 return (
                                                     <>
                                                         <tr>
                                                             <td className='idColumn'>{_id}</td>
+                                                            <td >{authorEmail}</td>
                                                             <td>
                                                                 <img src={img} className="img-fluid d-block mx-auto" alt="" srcset="" />
                                                             </td>
@@ -119,4 +121,4 @@ const Inventory = () => {
     );
 };
 
-export default Inventory;
+export default MyItems;

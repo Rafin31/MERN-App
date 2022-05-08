@@ -12,7 +12,6 @@ const Items = () => {
     const { items } = useRest()
     const navigate = useNavigate()
 
-    console.log(items);
 
     const redirect = (id) => {
         navigate(`/items/${id}`)

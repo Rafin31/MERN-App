@@ -19,6 +19,9 @@ import ManageItems from './Components/Manageitems/ManageItems';
 import ProtectiveRoute from './Components/UserSignIn/ProtectiveRoute';
 import Inventory from './Components/Inventroy/Inventory';
 import Additem from './Components/AddItem/Additem';
+import MyItems from './Components/MyItems/MyItems';
+import { FormGroup } from 'react-bootstrap';
+import Four04 from './Components/404page/Four04';
 
 
 
@@ -70,6 +73,15 @@ function App() {
 							<Additem />
 						</ProtectiveRoute>
 					} />
+
+					<Route path='/myItems' element={
+						<ProtectiveRoute>
+							<MyItems />
+						</ProtectiveRoute>
+					} />
+
+
+					<Route path='*' element={<Four04 />} />
 
 
 				</Routes>

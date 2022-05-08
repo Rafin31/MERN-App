@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import './Header.css'
 import { Container, Nav, Navbar, NavDropdown, Spinner } from 'react-bootstrap';
 import { Link, NavLink } from 'react-router-dom';
-import { FaUserAlt, FaBox, FaSignOutAlt, FaPhoneAlt, FaFax, FaAddressBook, FaClock } from 'react-icons/fa';
+import { FaUserAlt, FaBox, FaSignOutAlt, FaPhoneAlt, FaFax, FaAddressBook, FaClock, FaPlus } from 'react-icons/fa';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { signOut } from 'firebase/auth';
 import { BsFillGearFill } from 'react-icons/bs'
@@ -74,9 +74,12 @@ const Header = () => {
 
 
                                             id="collasible-nav-dropdown">
-                                            <NavDropdown.Item href="#action/3.1"> <FaUserAlt /> Profile</NavDropdown.Item>
-                                            <NavDropdown.Item href="#action/3.2"> <FaBox /> Inventory</NavDropdown.Item>
-                                            <NavDropdown.Item href="#action/3.3"><BsFillGearFill /> Manage Products</NavDropdown.Item>
+                                            <NavDropdown.Item href="/"> <FaUserAlt /> Profile</NavDropdown.Item>
+                                            <NavDropdown.Item href="/myItems"> <FaBox /> My Items</NavDropdown.Item>
+
+                                            <NavDropdown.Item href="/addItem"> <FaPlus /> Add Items</NavDropdown.Item>
+
+                                            <NavDropdown.Item href="/manageInventories"><BsFillGearFill /> Manage Products</NavDropdown.Item>
                                             <NavDropdown.Divider />
                                             <NavDropdown.Item href=" " onClick={handleLogout}><FaSignOutAlt /> Logout</NavDropdown.Item>
                                         </NavDropdown>

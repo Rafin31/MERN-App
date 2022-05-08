@@ -46,6 +46,22 @@ const Rest = () => {
 
     }
 
+    const addNewItem = (item) => {
+        let res;
+        fetch(`${baseURL}/items/addItems`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(item),
+        })
+            .then(res => res.json())
+            .then(data => res = data)
+
+        return res
+
+    }
+
     loadItems()
 
 
@@ -53,7 +69,8 @@ const Rest = () => {
         items,
         loadSingleItem,
         reStock,
-        deleteItem
+        deleteItem,
+        addNewItem
     }
 
 };
