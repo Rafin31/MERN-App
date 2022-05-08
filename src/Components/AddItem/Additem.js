@@ -39,7 +39,7 @@ const Additem = () => {
             const newProduct = { name, authorEmail, supplierName, description, quantity, price, img }
             addNewItem(newProduct)
             toast.success("Item Added")
-            navigate('/manageInventories')
+            navigate('/myItems')
         }
 
 

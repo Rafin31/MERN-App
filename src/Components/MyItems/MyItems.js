@@ -13,16 +13,22 @@ const MyItems = () => {
 
 
     const [user, loading] = useAuthState(auth)
+    const responseToken = localStorage.getItem("accessToken");
+    const token = JSON.parse(responseToken).accessToken
 
 
 
     useEffect(() => {
 
-        fetch(`${baseApiUrl}/myItems?email=${user.email}`)
+        fetch(`${baseApiUrl}/myItems?email=${user.email}`, {
+            headers: {
+                authorization: `Bearer ${token}`
+            }
+        })
             .then(res => res.json())
             .then(data => setItems(data))
 
-    }, [items, user])
+    }, [items, user, token])
 
 
     if (!items || loading) {

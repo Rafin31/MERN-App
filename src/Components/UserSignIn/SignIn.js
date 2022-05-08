@@ -85,12 +85,26 @@ const SignIn = () => {
 
     }
 
+    const getJWT = async (email) => {
+
+        await fetch('http://localhost:5000/organicFood/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email }),
+        })
+            .then(res => res.json())
+            .then(data => localStorage.setItem('accessToken', JSON.stringify(data)))
+    }
+
     const handleFormSubmit = async (event) => {
         event.preventDefault();
 
         if (toggle) { //sign up
             if (SignUpCredentials.email !== " " && SignUpCredentials.password !== " ") {
                 await createUserWithEmailAndPassword(SignUpCredentials.email, SignUpCredentials.password)
+                getJWT(SignUpCredentials.email)
                 await sendEmailVerification()
 
             } else {
@@ -98,12 +112,21 @@ const SignIn = () => {
                 return
             }
         } else { //sign in
-            signInWithEmailAndPassword(SignInCredentials.email, SignInCredentials.password);
+            await signInWithEmailAndPassword(SignInCredentials.email, SignInCredentials.password);
+            const email = SignInCredentials.email
+            let token;
+            //JWT token generate
+
+            getJWT(email)
+
         }
     }
 
     const handleGoogleSignUp = () => {
+
         signInWithGoogle()
+        getJWT(" ")
+
     }
 
     const resetPasswordHandle = async () => {
@@ -141,8 +164,17 @@ const SignIn = () => {
     }
     if (registrationUser || googleUser || SignInUser) {
 
-        let from = location.state?.from?.pathname || "/";
-        navigate(from, { replace: true })
+        const res = localStorage.getItem("accessToken")
+
+
+        if (res) {
+
+            let from = location.state?.from?.pathname || "/";
+            navigate(from, { replace: true })
+
+        }
+
+
     }
 
 
