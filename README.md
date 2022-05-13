@@ -7,7 +7,8 @@ Live Site link [Best Organic Food](https://best-organic-food.netlify.app/).
 
 - Responsive design 
 - Admin Panel
-- Modern Technology Used
+- Modern Technologies Used
+- Live Product Update 
 - User Authentication
 - user Login system
 - Password reset system
@@ -18,9 +19,17 @@ Live Site link [Best Organic Food](https://best-organic-food.netlify.app/).
 
 
 - React.js
-- Bootstrap
-- Firebase
-- JWT Token
-- React Leaflet
-- Rest API
+- React Context API 
+- React Custom Hooks
 - Express Js
+- MongoDb
+- Firebase
+- Rest API
+- Bootstrap
+- JWT Token 
+- React Leaflet
+- React Toast
+- Netlify 
+- Heroku 
+
+
