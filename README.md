@@ -54,7 +54,7 @@
     REACT_APP_projectId= your firebase key
     REACT_APP_storageBucket= your firebase key
     REACT_APP_messagingSenderId= your firebase key
-    REACT_APP_appI= your firebase key
+    REACT_APP_appId= your firebase key
 ```
 
 3. Install packages using 
