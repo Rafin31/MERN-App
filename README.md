@@ -44,9 +44,23 @@
 
 # How to run 
 
-1. Add **.env** file
+1. Download the project and unzip it, or clone it 
 
-2. Add these **Environment Variables**
+```javascript
+   git clone https://github.com/Rafin31/MERN-App.git  
+```
+
+   or, to clone it on your current dir 
+
+   
+```javascript
+   git clone https://github.com/Rafin31/MERN-App.git .
+
+```
+
+2. Add **.env** file to the project's root folder.
+
+3. Add these **Environment Variables** to the **.env** file. 
 
 ```javascript
     REACT_APP_apiKey= your firebase key
@@ -57,13 +71,12 @@
     REACT_APP_appId= your firebase key
 ```
 
-3. Install packages using 
+4. Install packages using. 
 ```
     npm install or yarn install
 ```
 
-4. 
-
+5. Start the server. 
 ```
     npm start or yarn start
 ```
